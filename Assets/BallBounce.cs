@@ -15,7 +15,8 @@ public class BallBounce : MonoBehaviour
     private float uniformScale = 1f;
     private Mesh deformingMesh;
     private Vector3[] originalVertices, displacedVertices, vertexVelocities;
-
+    private float scNextCol=0.0f;
+    private float scNextColRate=0.05f;
     void Start()
     {
         deformingMesh = GetComponent<MeshFilter>().mesh;
@@ -30,15 +31,20 @@ public class BallBounce : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (BounceSound)
-        { // && collision.relativeVelocity.magnitude > 2)
-            BounceSound.PlayOneShot(BounceSound.clip);
-        }
-        List<ContactPoint> contacts = new List<ContactPoint>();
-        int limit = collision.GetContacts(contacts);
-        for (int i=0;i<limit;i++)
+        //only register collision every col rate
+        if (Time.time > scNextCol)
         {
-            this.AddDeformingForce(contacts[i].point, this.force);
+            this.scNextCol = Time.time + this.scNextColRate;
+            if (BounceSound)
+            { // && collision.relativeVelocity.magnitude > 2)
+                BounceSound.PlayOneShot(BounceSound.clip);
+            }
+            List<ContactPoint> contacts = new List<ContactPoint>();
+            int limit = collision.GetContacts(contacts);
+            for (int i = 0; i < limit; i++)
+            {
+                this.AddDeformingForce(contacts[i].point, this.force);
+            }
         }
         
     }
