@@ -14,6 +14,8 @@ Ball is a #MRTK #Hololens2 ball application, the player push the ball and can co
  - The ball is deformed on collision
 	 - The Cube sphere and deformation  by Jasper Flick from:
 		 - https://catlikecoding.com/unity/tutorials/mesh-deformation/
+- The collision with the hand is done through "HandSmashService" created by Joost van Schaik:
+	- https://localjoost.github.io/HandSmashService-an-MRTK2-extension-service-to-smash-holograms-at-high-speed/
 
 ## Gameplay
 
@@ -30,7 +32,10 @@ Ball is a #MRTK #Hololens2 ball application, the player push the ball and can co
 ## To do
 - Top menu icons doesn't work
 - Use a better bounce sound
-- Adjust the force when pushing the ball
 - Vertical joystick connection
 - More sliders parameterization
-- Fix button only tether click is working 
+- Make the new HandSmashService trigger the ball deformation.
+
+## Done
+- Fix buttons only tether click is working 
+- Adjust the force when pushing the ball.
