@@ -25,5 +25,5 @@ public class BounceSlider : MonoBehaviour
         this.bouncynessLabel.text = this.text;
     }
 
-    public string text => "Bounciness: " + $"{this.mBall.bounciness:F2}";
+    public string text => "Bounce: " + $"{this.mBall.bounciness:F2}";
 }
